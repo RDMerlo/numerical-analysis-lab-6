@@ -28,6 +28,7 @@ m = 10
 h = l / n
 tau = T / m
 
+# Создание векторов и матрицы
 x = [i * h for i in range(n + 1)]
 t = [i * tau for i in range(m + 1)]
 u = [[0 for i in range(n + 1)] for j in range(n + 1)]
@@ -49,13 +50,13 @@ for j in range(1, m):
     for i in range(1, n):
         u[i][j + 1] = s * u[i + 1][j] + 2 * (1 - s) * u[i][j] + s * u[i - 1][j] - u[i][j - 1] + tau ** 2 * f_x_t(x[i],t[j])
 
-print("Значения на временных слоях:")
+print("Матрица:")
 n = len(u)
 k = len(u[0])
-print("      x = |       0         0.1        0.2        0.3        0.4        0.5        0.6        0.7        0.8        0.9         1")
-print("-----------------------------------------------------------------------------------------------------------------------------------")
+print("x       =         0         0.1        0.2        0.3        0.4        0.5        0.6        0.7        0.8        0.9         1")
+print("")
 for Col in range(k - 1, -1, -1):
-    print('t = ', Col / 10, end="  |")
+    print('t = ', Col / 10, end="   ")
     for Row in range(n):
         print("{0:10.4f}".format(u[Row][Col]), end=" ")
     print()
